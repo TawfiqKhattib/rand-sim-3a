@@ -22,3 +22,20 @@ class CSV_Manager:
             all_data.append(data_dict)
 
         return all_data
+
+    def manag_properties(self):
+        all_Mappingdata={};
+        all_data = self.get_csv_as_dicts();
+        for article in all_data:
+            if (len(all_Mappingdata.keys())>0) and (article["author"] in all_Mappingdata.keys()):
+                all_Mappingdata[article["author"]].append(article);
+            else:
+                all_Mappingdata[article["author"]]= [article]
+            if (len(all_Mappingdata.keys())>0) and (article["category"] in all_Mappingdata.keys()):
+                all_Mappingdata[article["category"]].append(article);
+            else:
+                all_Mappingdata[article["category"]]= [article]
+
+        return all_Mappingdata;
+
+
